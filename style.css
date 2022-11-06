@@ -1,0 +1,11 @@
+@font-face {
+  font-family: 'Epsilon';
+  src: url('./public/fonts/Epsilon.ttf');
+}
+
+html,
+body {
+  background-color: #000;
+  color: #FFF;
+  font-family: 'Epsilon';
+}
