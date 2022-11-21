@@ -5,6 +5,58 @@
     <link rel="stylesheet" href="./style.css">
   </body>
   <body>
-    Coming soon...
+
+    <div class="contact">
+      <a target="new" href="https://twitter.com/atkascha_">twitter</a>
+      <a target="new" href="https://twitch.tv/atkascha_">twitch</a>
+      <a target="new" href="https://github.com/atkascha">github</a>
+    </div>
+    <div class="card-container"></div>
+
+    <script>
+
+      const cardContainer = document.querySelector('.card-container');
+      const cardData = [
+        {
+          title: 'MESSENGER [working title]',
+          url: 'https://twitter.com/atkascha_/status/1593253771492007938',
+          img: './public/images/site/messenger.PNG'
+        },
+        {
+          title: 'ENTROPY',
+          url: 'https://twitter.com/atkascha_/status/1588456780178526209',
+          img: './public/images/site/entropy.PNG'
+        },
+        {
+          title: 'POD',
+          url: 'https://atkascha.gg/pod/',
+          img: './public/images/site/pod.PNG'
+        },
+        {
+          title: 'BALLS',
+          url: 'https://atkascha.gg/balls/',
+          img: './public/images/site/balls.PNG'
+        }
+      ];
+
+      for (let i = 0; i < cardData.length; i++) {
+        let data = cardData[i];
+
+        let card = document.createElement('div');
+        card.className = 'card';
+        card.style.backgroundImage = `url(${data.img})`;
+
+        let title = document.createElement('div');
+        title.className = 'title';
+        title.innerText = data.title;
+        card.appendChild(title);
+
+        card.addEventListener('click', () => window.location.href = data.url);
+
+        cardContainer.appendChild(card);
+      }
+
+    </script>
+
   </body>
 </html>

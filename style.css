@@ -3,9 +3,62 @@
   src: url('./public/fonts/Epsilon.ttf');
 }
 
+@font-face {
+  font-family: 'Mono-Regular';
+  src: url(./public/antireal/Fonts/MONO-RGOMODULAR-Regular.ttf);
+}
+
+@font-face {
+  font-family: 'NB-Architekt-Regular';
+  src: url(./public/antireal/Fonts/NB\ Architekt\ Regular.otf);
+}
+
 html,
 body {
   background-color: #000;
   color: #FFF;
-  font-family: 'Epsilon';
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.contact {
+  margin: 10px;
+}
+
+.contact a {
+  color: #FFF;
+  font-family: 'Mono-Regular';
+  text-decoration: none;
+}
+
+.contact a:hover {
+  color: cyan;
+}
+
+.card-container {
+  display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-evenly;
+}
+
+.card {
+  background-size: cover;
+  background-repeat: no-repeat;
+  filter: grayscale(100%);
+  font-family: 'Mono-Regular';
+  height: 25vh;
+  transition: 0.25s;
+  width: 30vw;
+}
+
+.card:hover {
+  cursor: pointer;
+  filter: grayscale(0%);
+  -webkit-filter: grayscale(0%);
+  -moz-filter: grayscale(0%);
 }
