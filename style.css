@@ -13,52 +13,51 @@
   src: url(./public/antireal/Fonts/NB\ Architekt\ Regular.otf);
 }
 
+/* icons from:https: //freeicons.io/icon-list/social-media-icons-5 */
+
 html,
 body {
   background-color: #000;
-  color: #FFF;
-}
-
-html,
-body {
   margin: 0;
   padding: 0;
-}
 
-.contact {
-  margin: 10px;
-}
-
-.contact a {
-  color: #FFF;
-  font-family: 'Mono-Regular';
-  text-decoration: none;
-}
-
-.contact a:hover {
-  color: cyan;
-}
-
-.card-container {
-  display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: space-evenly;
+  /* no scroll bars */
+  overflow-x: hidden;
 }
 
 .card {
-  background-size: cover;
   background-repeat: no-repeat;
-  filter: grayscale(100%);
-  font-family: 'Mono-Regular';
-  height: 25vh;
-  transition: 0.25s;
-  width: 30vw;
+  background-position: center center;
+  background-size: cover;
+
+  color: #FFF;
+  float: left;
+  font-family: 'Epsilon';
+  height: 100vh;
+  width: 15vw;
+
+  opacity: 0.8;
+  transform: skew(-10deg);
 }
 
 .card:hover {
   cursor: pointer;
-  filter: grayscale(0%);
-  -webkit-filter: grayscale(0%);
-  -moz-filter: grayscale(0%);
+  opacity: 1;
+  width: 50vw;
+}
+
+.icons {
+  width: 10px;
+
+  position: fixed;
+    bottom: 10;
+    right: 35;
+  z-index: 100;
+}
+
+.icons img {
+  cursor: pointer;
+  height: 30px;
+  filter: invert(1);
+  margin-bottom: 10px;
 }

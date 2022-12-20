@@ -1,65 +1,106 @@
 <html>
   <body>
     <title>Atkascha</title>
+
+    <meta charset="UTF-8">
+    <meta name="google" content="notranslate">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="shortcut icon" type="imagae/x-icon" href="/public/images/favicon.ico">
     <link rel="stylesheet" href="./style.css">
   </body>
   <body>
 
-    <div class="contact">
-      <a target="new" href="https://twitter.com/atkascha_">twitter</a>
-      <a target="new" href="https://twitch.tv/atkascha_">twitch</a>
-      <a target="new" href="https://github.com/atkascha">github</a>
-      <a target="new" href="https://na.finalfantasyxiv.com/lodestone/character/39279327/">ffxiv</a>
+    <div class="container"></div>
+    <div class="icons">
+      <a target="_blank" href="https://twitter.com/atkascha_"><img src="./public/images/site/v2/icons/twitter.png" /></a>
+      <a target="_blank" href="https://twitch.tv/atkascha_"><img src="./public/images/site/v2/icons/twitch.png" /></a>
+      <a target="_blank" href="https://github.com/atkascha"><img src="./public/images/site/v2/icons/github.png" /></a>
     </div>
-    <div class="card-container"></div>
 
     <script>
 
-      const cardContainer = document.querySelector('.card-container');
-      const cardData = [
+      // constants
+      const CARD_CONTAINER = document.querySelector('.container');
+      const PROJECTS = [
         {
-          title: 'MESSENGER [working title]',
-          url: 'https://twitter.com/atkascha_/status/1593253771492007938',
-          img: './public/images/site/messenger.PNG'
+          title: 'anki',
+          background: {
+            firstFrame: './public/images/site/v2/rei0.gif',
+            gif: './public/images/site/v2/rei.gif'
+          },
+          link: 'https://atkascha.gg/anki'
         },
         {
-          title: 'ANKI',
-          url: 'https://atkascha.gg/anki/',
-          img: './public/images/site/anki.PNG'
+          title: 'balls',
+          background: {
+            firstFrame: './public/images/site/v2/kissshot0.gif',
+            gif: './public/images/site/v2/kissshot.gif'
+          },
+          link: 'https://atkascha.gg/balls'
         },
         {
-          title: 'ENTROPY',
-          url: 'https://twitter.com/atkascha_/status/1588456780178526209',
-          img: './public/images/site/entropy.PNG'
+          title: 'msg',
+          background: {
+            firstFrame: './public/images/site/v2/re-l0.gif',
+            gif: './public/images/site/v2/re-l.gif'
+          },
+          link: 'https://twitter.com/atkascha_/status/1601118660101144576'
         },
         {
-          title: 'POD',
-          url: 'https://atkascha.gg/pod/',
-          img: './public/images/site/pod.PNG'
-        },
-        {
-          title: 'BALLS',
-          url: 'https://atkascha.gg/balls/',
-          img: './public/images/site/balls.PNG'
+          title: 'pod',
+          background: {
+            firstFrame: './public/images/site/v2/faye0.gif',
+            gif: './public/images/site/v2/faye.gif'
+          },
+          link: 'https://atkascha.gg/pod'
         }
       ];
 
-      for (let i = 0; i < cardData.length; i++) {
-        let data = cardData[i];
+      class Card {
+        constructor({ title, background, link }) {
+          this.title = title;
+          this.background = background;
+          this.link = link;
 
-        let card = document.createElement('div');
-        card.className = 'card';
-        card.style.backgroundImage = `url(${data.img})`;
+          this.#buildHtml();
+        }
 
-        let title = document.createElement('div');
-        title.className = 'title';
-        title.innerText = data.title;
-        card.appendChild(title);
+        setListeners() {
+          this.html.addEventListener('mouseover', function(_e) {
+            this.html.style.backgroundImage = `url(${this.background.gif})`
+          }.bind(this));
 
-        card.addEventListener('click', () => window.location.href = data.url);
+          this.html.addEventListener('mouseleave', function (_e) {
+            this.html.style.backgroundImage = `url(${this.background.firstFrame})`
+          }.bind(this));
 
-        cardContainer.appendChild(card);
+          this.html.addEventListener('click', function(_e) {
+            window.open(this.link, '_blank');
+          }.bind(this));
+        }
+
+        #buildHtml() {
+          let card = document.createElement('div');
+          card.className = 'card';
+          card.style.backgroundImage = `url(${this.background.firstFrame})`;
+
+          let title = document.createElement('div');
+          title.className = 'title';
+          title.innerText = this.title;
+          card.appendChild(title);
+
+          this.html = card;
+        }
+      }
+
+      // run
+      for (let i = 0; i < PROJECTS.length; i++) {
+        let project = PROJECTS[i];
+        let card = new Card(project);
+        CARD_CONTAINER.appendChild(card.html);
+
+        card.setListeners();
       }
 
     </script>
